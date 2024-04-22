@@ -1,29 +1,50 @@
+module.exports = function randomMessage() {
+  let sentence = "";
 
-module.exports = function randomMessage(){
-	
-	let sentence =''
+  const articleList = [
+    { text: "A", type: "singular" },
+    { text: "The", type: "singular" },
+    { text: "The", type: "plural" },
+    { text: "Three", type: "plural" },
+    { text: "Twenty-Six", type: "plural" },
+    { text: "Uncountable", type: "plural" },
+  ];
 
-	const firstWordList = [{text:'A', type:'singular'}, {text:'The', type:'singular'}, {text:'Three', type:'plural'}, {text:'Twenty-Six', type:'plural'}, {text:'Uncountable', type:'plural'}];
-	
-	const firstPos = Math.floor(Math.random()*(firstWordList.length));
+  const articleIndex = Math.floor(Math.random() * articleList.length);
 
-	const firstWord = firstWordList[firstPos]; 
-	
-	const secondWordList = [{text:'balloon', type:'singular'}, {text:'ham sandwich', type:'singular'}, {text:'rollercoasters', type:'plural'}, {text:'candyfloss vendors', type:'plural'}, {text:'cantaloupes', type:'plural'}, {text:'Moon Mission Smoothie',type:'singular'}];
+  const article = articleList[articleIndex];
 
-	secondWordApplicable = secondWordList.filter((item)=> item.type==firstWord.type);
+  const subjectList = [
+    { text: "balloon", type: "singular" },
+    { text: "ham sandwich", type: "singular" },
+    { text: "rollercoasters", type: "plural" },
+    { text: "candyfloss vendors", type: "plural" },
+    { text: "cantaloupes", type: "plural" },
+    { text: "Moon Mission Smoothie", type: "singular" },
+  ];
 
-	secondPos = Math.floor(Math.random()*(secondWordApplicable.length));
+  subjectApplicable = subjectList.filter((item) => item.type == article.type);
 
-	const secondWord = secondWordApplicable[secondPos];
+  subjectIndex = Math.floor(Math.random() * subjectApplicable.length);
 
-	const thirdWordList = [{text:'pops', type:'singular'}, {text:'flies', type:'singular'}, {text:'pop', type:'plural'}, {text:'illumine', type:'plural'}, {text:'creak', type:'plural'}, {text:'glows',type:'singular'}];
+  const subject = subjectApplicable[subjectIndex];
 
-	thirdWordApplicable = thirdWordList.filter((item)=> item.type==firstWord.type);
+  const verbList = [
+    { text: "pops", type: "singular" },
+    { text: "flies", type: "singular" },
+    { text: "pop", type: "plural" },
+    { text: "illumine", type: "plural" },
+    { text: "creak", type: "plural" },
+    { text: "glows", type: "singular" },
+  ];
 
-	thirdPos = Math.floor(Math.random()*(thirdWordApplicable.length));
+  verbApplicable = verbList.filter(
+    (item) => item.type == article.type
+  );
 
-	const thirdWord = thirdWordApplicable[thirdPos];
+  thirdPos = Math.floor(Math.random() * verbApplicable.length);
 
-	return firstWord.text+" "+secondWord.text+" "+thirdWord.text;
+  const verb = verbApplicable[thirdPos];
+
+  return article.text + " " + subject.text + " " + verb.text+".";
 };

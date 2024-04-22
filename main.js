@@ -3,13 +3,13 @@ const randomMessage = require('./randomMessage.js');
 
 let input =''
 
-async function main(){
+ function main(){
 	do{
-		input = await prompt("Hello, please press enter to receive a random message! (type 'quit' to exit.):    ");
+		input = prompt("Hello, please press enter to receive a random message! (type 'quit' to exit):    ");
 		if(input =='quit'){
 			break;
 		}else{
-			console.log(await randomMessage());
+			console.log(randomMessage());
 		}
 
 }while(input!='quit')
